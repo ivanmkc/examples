@@ -33,7 +33,7 @@ class ViewController: UIViewController {
 
   // MARK: Instance Variables
   // Holds the results at any time
-  private var result: Result?
+  private var result: Result<[ClassificationInference]>?
   private var initialBottomSpace: CGFloat = 0.0
   private var previousInferenceTimeMs: TimeInterval = Date.distantPast.timeIntervalSince1970 * 1000
 
@@ -42,8 +42,8 @@ class ViewController: UIViewController {
   private lazy var cameraCapture = CameraFeedManager(previewView: previewView)
 
   // Handles all data preprocessing and makes calls to run inference through the `Interpreter`.
-  private var modelDataHandler: ModelDataHandler? =
-    ModelDataHandler(modelFileInfo: MobileNet.modelInfo, labelsFileInfo: MobileNet.labelsInfo)
+  private var modelDataHandler: ImageClassificationModelDataHandler? =
+    ImageClassificationModelDataHandler(modelFileInfo: MobileNet.modelInfo, labelsFileInfo: MobileNet.labelsInfo)
 
   // Handles the presenting of results on the screen
   private var inferenceViewController: InferenceViewController?
@@ -146,11 +146,10 @@ extension ViewController: InferenceViewControllerDelegate {
 
   func didChangeThreadCount(to count: Int) {
     if modelDataHandler?.threadCount == count { return }
-    modelDataHandler = ModelDataHandler(
+    modelDataHandler = ImageClassificationModelDataHandler(
       modelFileInfo: MobileNet.modelInfo,
       labelsFileInfo: MobileNet.labelsInfo,
-      threadCount: count
-    )
+      threadCount: count)
   }
 }
 

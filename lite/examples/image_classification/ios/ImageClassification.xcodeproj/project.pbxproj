@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5907E623F8485E17B5BD4C77 /* Pods_ImageClassification.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CC4C97F37EC38541E71580DD /* Pods_ImageClassification.framework */; };
+		78F01971242F0F5C0001D0D6 /* ModelDataHandling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F01970242F0F5C0001D0D6 /* ModelDataHandling.swift */; };
 		AA16E5A22180843800D9E153 /* InfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA16E5A12180843700D9E153 /* InfoCell.swift */; };
 		AA5B0EEA217E5E300026FF23 /* InferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5B0EE9217E5E300026FF23 /* InferenceViewController.swift */; };
 		AA5B0EEC217E70000026FF23 /* CurvedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5B0EEB217E70000026FF23 /* CurvedView.swift */; };
@@ -24,13 +26,17 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		78F0196E242F0DEE0001D0D6 /* style_predict_quantized_256.tflite */ = {isa = PBXFileReference; lastKnownFileType = file; path = style_predict_quantized_256.tflite; sourceTree = "<group>"; };
+		78F0196F242F0E0B0001D0D6 /* style_transfer_quantized_384.tflite */ = {isa = PBXFileReference; lastKnownFileType = file; path = style_transfer_quantized_384.tflite; sourceTree = "<group>"; };
+		78F01970242F0F5C0001D0D6 /* ModelDataHandling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelDataHandling.swift; sourceTree = "<group>"; };
+		79B4E501CC3B9C1D89B2BC99 /* Pods-ImageClassification.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImageClassification.release.xcconfig"; path = "Target Support Files/Pods-ImageClassification/Pods-ImageClassification.release.xcconfig"; sourceTree = "<group>"; };
 		AA16E5A12180843700D9E153 /* InfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoCell.swift; sourceTree = "<group>"; };
 		AA5B0EE9217E5E300026FF23 /* InferenceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InferenceViewController.swift; sourceTree = "<group>"; };
 		AA5B0EEB217E70000026FF23 /* CurvedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurvedView.swift; sourceTree = "<group>"; };
 		AA5FEB7B21355CCC00F9BD4B /* mobilenet_quant_v1_224.tflite */ = {isa = PBXFileReference; lastKnownFileType = file; path = mobilenet_quant_v1_224.tflite; sourceTree = "<group>"; };
 		AA5FEB7C21355CCC00F9BD4B /* labels.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = labels.txt; sourceTree = "<group>"; };
 		AAAB096D218981FA0015A1F2 /* CVPixelBufferExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CVPixelBufferExtension.swift; sourceTree = "<group>"; };
-		AABFCBB1213FE0B100C0A67B /* ModelDataHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelDataHandler.swift; sourceTree = "<group>"; };
+		AABFCBB1213FE0B100C0A67B /* ModelDataHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = ModelDataHandler.swift; sourceTree = "<group>"; tabWidth = 2; };
 		AAE79E56213521DA00E7AC1F /* ImageClassification.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageClassification.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AAE79E59213521DA00E7AC1F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AAE79E5E213521DA00E7AC1F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -40,6 +46,8 @@
 		AAE79E942135237A00E7AC1F /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		AAE79E982135268800E7AC1F /* PreviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewView.swift; sourceTree = "<group>"; };
 		AAE79E992135268800E7AC1F /* CameraFeedManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraFeedManager.swift; sourceTree = "<group>"; };
+		CC4C97F37EC38541E71580DD /* Pods_ImageClassification.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ImageClassification.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FD1295825F55771C142321E6 /* Pods-ImageClassification.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImageClassification.debug.xcconfig"; path = "Target Support Files/Pods-ImageClassification/Pods-ImageClassification.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5907E623F8485E17B5BD4C77 /* Pods_ImageClassification.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,6 +81,8 @@
 		AA5FEB7A21355CCC00F9BD4B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				78F0196F242F0E0B0001D0D6 /* style_transfer_quantized_384.tflite */,
+				78F0196E242F0DEE0001D0D6 /* style_predict_quantized_256.tflite */,
 				AA5FEB7B21355CCC00F9BD4B /* mobilenet_quant_v1_224.tflite */,
 				AA5FEB7C21355CCC00F9BD4B /* labels.txt */,
 			);
@@ -98,6 +109,7 @@
 		AABFCBB0213FE05000C0A67B /* ModelDataHandler */ = {
 			isa = PBXGroup;
 			children = (
+				78F01970242F0F5C0001D0D6 /* ModelDataHandling.swift */,
 				AABFCBB1213FE0B100C0A67B /* ModelDataHandler.swift */,
 			);
 			path = ModelDataHandler;
@@ -108,6 +120,8 @@
 			children = (
 				AAE79E58213521DA00E7AC1F /* ImageClassification */,
 				AAE79E57213521DA00E7AC1F /* Products */,
+				DB78A6F809CBEF7BD59A3A1B /* Pods */,
+				C7692D66C8DF55213FFC7EFF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -155,6 +169,23 @@
 			path = "Camera Feed";
 			sourceTree = "<group>";
 		};
+		C7692D66C8DF55213FFC7EFF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CC4C97F37EC38541E71580DD /* Pods_ImageClassification.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DB78A6F809CBEF7BD59A3A1B /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FD1295825F55771C142321E6 /* Pods-ImageClassification.debug.xcconfig */,
+				79B4E501CC3B9C1D89B2BC99 /* Pods-ImageClassification.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -162,6 +193,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AAE79E7E213521DB00E7AC1F /* Build configuration list for PBXNativeTarget "ImageClassification" */;
 			buildPhases = (
+				6F6D4C9C8F08EC81CD3A74DB /* [CP] Check Pods Manifest.lock */,
 				AA055D8B2162320A00B25948 /* ShellScript */,
 				AAE79E52213521DA00E7AC1F /* Sources */,
 				AAE79E53213521DA00E7AC1F /* Frameworks */,
@@ -226,6 +258,28 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		6F6D4C9C8F08EC81CD3A74DB /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-ImageClassification-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		AA055D8B2162320A00B25948 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -258,6 +312,7 @@
 				AA16E5A22180843800D9E153 /* InfoCell.swift in Sources */,
 				AABFCBB2213FE0B100C0A67B /* ModelDataHandler.swift in Sources */,
 				AA5B0EEA217E5E300026FF23 /* InferenceViewController.swift in Sources */,
+				78F01971242F0F5C0001D0D6 /* ModelDataHandling.swift in Sources */,
 				AAE79E5A213521DA00E7AC1F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -402,11 +457,12 @@
 		};
 		AAE79E7F213521DB00E7AC1F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FD1295825F55771C142321E6 /* Pods-ImageClassification.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = U2PH7ZJ755;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -417,7 +473,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.tensorflow.ImageClassification;
+				PRODUCT_BUNDLE_IDENTIFIER = ivan.cheung.ImageClassification;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -428,11 +484,12 @@
 		};
 		AAE79E80213521DB00E7AC1F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 79B4E501CC3B9C1D89B2BC99 /* Pods-ImageClassification.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = U2PH7ZJ755;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -443,7 +500,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = org.tensorflow.ImageClassification;
+				PRODUCT_BUNDLE_IDENTIFIER = ivan.cheung.ImageClassification;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;

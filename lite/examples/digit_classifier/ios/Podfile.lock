@@ -9,7 +9,7 @@ DEPENDENCIES:
   - TensorFlowLiteSwift
 
 SPEC REPOS:
-  https://github.com/cocoapods/specs.git:
+  trunk:
     - Sketch
     - TensorFlowLiteC
     - TensorFlowLiteSwift
@@ -21,4 +21,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: db17edffc3754b40a0cf959adc9530d3838970d5
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.9.1

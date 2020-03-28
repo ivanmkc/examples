@@ -17,31 +17,23 @@ import TensorFlowLite
 import UIKit
 import Accelerate
 
-/// A result from invoking the `Interpreter`.
-struct Result {
-  let inferenceTime: Double
-  let inferences: [Inference]
-}
-
-/// An inference from invoking the `Interpreter`.
-struct Inference {
-  let confidence: Float
-  let label: String
-}
-
-/// Information about a model file or labels file.
-typealias FileInfo = (name: String, extension: String)
-
 /// Information about the MobileNet model.
 enum MobileNet {
   static let modelInfo: FileInfo = (name: "mobilenet_quant_v1_224", extension: "tflite")
   static let labelsInfo: FileInfo = (name: "labels", extension: "txt")
 }
 
+/// An inference from invoking the `Interpreter`.
+struct ClassificationInference {
+  let confidence: Float
+  let label: String
+}
+
 /// This class handles all data preprocessing and makes calls to run inference on a given frame
 /// by invoking the `Interpreter`. It then formats the inferences obtained and returns the top N
 /// results for a successful inference.
-class ModelDataHandler {
+class ImageClassificationModelDataHandler: ModelDataHandling {
+  typealias Inference = [ClassificationInference]
 
   // MARK: - Internal Properties
 
@@ -105,7 +97,7 @@ class ModelDataHandler {
   // MARK: - Internal Methods
 
   /// Performs image preprocessing, invokes the `Interpreter`, and processes the inference results.
-  func runModel(onFrame pixelBuffer: CVPixelBuffer) -> Result? {
+  func runModel(onFrame pixelBuffer: CVPixelBuffer) -> Result<[ClassificationInference]>? {
     
     let sourcePixelFormat = CVPixelBufferGetPixelFormatType(pixelBuffer)
     assert(sourcePixelFormat == kCVPixelFormatType_32ARGB ||
@@ -180,7 +172,7 @@ class ModelDataHandler {
   // MARK: - Private Methods
 
   /// Returns the top N inference results sorted in descending order.
-  private func getTopN(results: [Float]) -> [Inference] {
+  private func getTopN(results: [Float]) -> [ClassificationInference] {
     // Create a zipped array of tuples [(labelIndex: Int, confidence: Float)].
     let zippedResults = zip(labels.indices, results)
 
@@ -188,7 +180,7 @@ class ModelDataHandler {
     let sortedResults = zippedResults.sorted { $0.1 > $1.1 }.prefix(resultCount)
 
     // Return the `Inference` results.
-    return sortedResults.map { result in Inference(confidence: result.1, label: labels[result.0]) }
+    return sortedResults.map { result in ClassificationInference(confidence: result.1, label: labels[result.0]) }
   }
 
   /// Loads the labels from the labels file and stores them in the `labels` property.

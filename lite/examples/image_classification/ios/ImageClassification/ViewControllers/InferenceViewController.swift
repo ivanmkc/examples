@@ -71,7 +71,7 @@ class InferenceViewController: UIViewController {
   private let highlightedFont = UIFont.systemFont(ofSize: 14.0, weight: .medium)
 
   // MARK: Instance Variables
-  var inferenceResult: Result? = nil
+  var inferenceResult: Result<[ClassificationInference]>? = nil
   var wantedInputWidth: Int = 0
   var wantedInputHeight: Int = 0
   var resolution: CGSize = CGSize.zero
