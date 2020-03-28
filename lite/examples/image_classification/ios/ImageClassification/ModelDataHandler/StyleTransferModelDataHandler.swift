@@ -11,7 +11,8 @@ import TensorFlowLite
 
 /// Information about the MobileNet model.
 enum StyleTransferModel {
-  static let modelInfo: FileInfo = (name: "style_transfer_quantized_384", extension: "tflite")
+  static let modelInfo: FileInfo = (name: "style_transfer_f16_384", extension: "tflite")
+  static let modelInfoQuantized: FileInfo = (name: "style_transfer_quantized_384", extension: "tflite")
 }
 
 struct StyleTransferInput {

@@ -10,7 +10,7 @@ import CoreImage
 
 /// A result from invoking the `Interpreter`.
 struct Result<Inference> {
-  let elapsedTimeInMs: Double // TODO: Add unit
+  let elapsedTimeInMs: Double
   let inference: Inference
 }
 

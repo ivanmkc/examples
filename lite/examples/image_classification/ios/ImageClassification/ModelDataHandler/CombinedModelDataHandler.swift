@@ -8,22 +8,6 @@
 
 import TensorFlowLite
 
-///// An inference from invoking the `Interpreter`.
-//struct StyleBottleneck {
-////  struct LogInfo {
-////    let preProcessTime: Int
-////    let stylePredictTime: Int
-////    let styleTransferTime: Int
-////    let postProcessTime: Int
-////    let totalExecutionTime: Int
-////    let executionLog: String
-////    let errorMessage: String
-////  }
-//
-//  let styleBottleneck: [Float]
-////  let logInfo: LogInfo? // TODO: Make non-nullable later
-//}
-
 /// This class handles all data preprocessing and makes calls to run inference on a given frame
 /// by invoking the `Interpreter`. It then formats the inferences obtained and returns the top N
 /// results for a successful inference.
@@ -75,6 +59,6 @@ class CombinedModelDataHandler: ModelDataHandling {
           Total: \(elapsedTimeInMs)\n
           """)
     
-    return Result<UIImage>(elapsedTimeInMs: elapsedTimeInMs, inference: imageResult.inference) // TODO: Add time spent
+    return Result<UIImage>(elapsedTimeInMs: elapsedTimeInMs, inference: imageResult.inference)
   }
 }

@@ -142,16 +142,6 @@ class ViewController: UIViewController {
 
 }
 
-// MARK: InferenceViewControllerDelegate Methods
-extension ViewController: InferenceViewControllerDelegate {
-
-  func didChangeThreadCount(to count: Int) {
-    if modelDataHandler?.threadCount == count { return }
-        
-    modelDataHandler = CombinedModelDataHandler(threadCount: count)
-  }
-}
-
 // MARK: CameraFeedManagerDelegate Methods
 extension ViewController: CameraFeedManagerDelegate {
 

@@ -19,7 +19,8 @@ enum Style: String, CaseIterable {
 
 /// Information about the MobileNet model.
 enum StylePredictorModel {
-  static let modelInfo: FileInfo = (name: "style_predict_quantized_256", extension: "tflite")
+  static let modelInfo: FileInfo = (name: "style_predict_f16_256", extension: "tflite")
+  static let modelInfoQuantized: FileInfo = (name: "style_predict_quantized_256", extension: "tflite")
 }
 
 typealias StyleBottleneck = [Float]

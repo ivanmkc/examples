@@ -17,8 +17,8 @@
 		78F0197C242FD9E10001D0D6 /* CombinedModelDataHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F0197B242FD9E10001D0D6 /* CombinedModelDataHandler.swift */; };
 		78F01980242FE4100001D0D6 /* InferenceImageDisplayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F0197F242FE4100001D0D6 /* InferenceImageDisplayViewController.swift */; };
 		78F01982242FE8390001D0D6 /* ImageHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78F01981242FE8390001D0D6 /* ImageHelper.swift */; };
-		AA16E5A22180843800D9E153 /* InfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA16E5A12180843700D9E153 /* InfoCell.swift */; };
-		AA5B0EEA217E5E300026FF23 /* InferenceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5B0EE9217E5E300026FF23 /* InferenceViewController.swift */; };
+		78F019C424300F910001D0D6 /* style_predict_f16_256.tflite in Resources */ = {isa = PBXBuildFile; fileRef = 78F019C224300F910001D0D6 /* style_predict_f16_256.tflite */; };
+		78F019C524300F910001D0D6 /* style_transfer_f16_384.tflite in Resources */ = {isa = PBXBuildFile; fileRef = 78F019C324300F910001D0D6 /* style_transfer_f16_384.tflite */; };
 		AA5B0EEC217E70000026FF23 /* CurvedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA5B0EEB217E70000026FF23 /* CurvedView.swift */; };
 		AAAB096E218981FA0015A1F2 /* CVPixelBuffer+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAAB096D218981FA0015A1F2 /* CVPixelBuffer+extension.swift */; };
 		AAE79E5A213521DA00E7AC1F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AAE79E59213521DA00E7AC1F /* AppDelegate.swift */; };
@@ -40,9 +40,9 @@
 		78F0197B242FD9E10001D0D6 /* CombinedModelDataHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = CombinedModelDataHandler.swift; sourceTree = "<group>"; tabWidth = 2; };
 		78F0197F242FE4100001D0D6 /* InferenceImageDisplayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InferenceImageDisplayViewController.swift; sourceTree = "<group>"; };
 		78F01981242FE8390001D0D6 /* ImageHelper.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = ImageHelper.swift; sourceTree = "<group>"; tabWidth = 2; };
+		78F019C224300F910001D0D6 /* style_predict_f16_256.tflite */ = {isa = PBXFileReference; lastKnownFileType = file; name = style_predict_f16_256.tflite; path = ../../../../../../../../../Downloads/style_predict_f16_256.tflite; sourceTree = "<group>"; };
+		78F019C324300F910001D0D6 /* style_transfer_f16_384.tflite */ = {isa = PBXFileReference; lastKnownFileType = file; name = style_transfer_f16_384.tflite; path = ../../../../../../../../../Downloads/style_transfer_f16_384.tflite; sourceTree = "<group>"; };
 		79B4E501CC3B9C1D89B2BC99 /* Pods-ImageClassification.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ImageClassification.release.xcconfig"; path = "Target Support Files/Pods-ImageClassification/Pods-ImageClassification.release.xcconfig"; sourceTree = "<group>"; };
-		AA16E5A12180843700D9E153 /* InfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoCell.swift; sourceTree = "<group>"; };
-		AA5B0EE9217E5E300026FF23 /* InferenceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InferenceViewController.swift; sourceTree = "<group>"; };
 		AA5B0EEB217E70000026FF23 /* CurvedView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurvedView.swift; sourceTree = "<group>"; };
 		AAAB096D218981FA0015A1F2 /* CVPixelBuffer+extension.swift */ = {isa = PBXFileReference; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = "CVPixelBuffer+extension.swift"; sourceTree = "<group>"; tabWidth = 2; };
 		AAE79E56213521DA00E7AC1F /* ImageClassification.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ImageClassification.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -70,14 +70,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		AA16E5A02180843700D9E153 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				AA16E5A12180843700D9E153 /* InfoCell.swift */,
-			);
-			path = Cells;
-			sourceTree = "<group>";
-		};
 		AA24751A2170A054000B6A31 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -89,6 +81,8 @@
 		AA5FEB7A21355CCC00F9BD4B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				78F019C224300F910001D0D6 /* style_predict_f16_256.tflite */,
+				78F019C324300F910001D0D6 /* style_transfer_f16_384.tflite */,
 				78F0196F242F0E0B0001D0D6 /* style_transfer_quantized_384.tflite */,
 				78F0196E242F0DEE0001D0D6 /* style_predict_quantized_256.tflite */,
 			);
@@ -146,7 +140,6 @@
 			isa = PBXGroup;
 			children = (
 				AAAB096C218981A30015A1F2 /* Extensions */,
-				AA16E5A02180843700D9E153 /* Cells */,
 				AA24751A2170A054000B6A31 /* Views */,
 				AABFCBB0213FE05000C0A67B /* ModelDataHandler */,
 				AAE79E932135236700E7AC1F /* ViewControllers */,
@@ -165,7 +158,6 @@
 			isa = PBXGroup;
 			children = (
 				AAE79E942135237A00E7AC1F /* ViewController.swift */,
-				AA5B0EE9217E5E300026FF23 /* InferenceViewController.swift */,
 				78F0197F242FE4100001D0D6 /* InferenceImageDisplayViewController.swift */,
 			);
 			path = ViewControllers;
@@ -261,7 +253,9 @@
 				78F01977242FD2DD0001D0D6 /* style_transfer_quantized_384.tflite in Resources */,
 				AAE79E64213521DB00E7AC1F /* LaunchScreen.storyboard in Resources */,
 				AAE79E61213521DB00E7AC1F /* Assets.xcassets in Resources */,
+				78F019C424300F910001D0D6 /* style_predict_f16_256.tflite in Resources */,
 				78F01978242FD2DD0001D0D6 /* style_predict_quantized_256.tflite in Resources */,
+				78F019C524300F910001D0D6 /* style_transfer_f16_384.tflite in Resources */,
 				AAE79E5F213521DA00E7AC1F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -323,9 +317,7 @@
 				AAAB096E218981FA0015A1F2 /* CVPixelBuffer+extension.swift in Sources */,
 				78F0197A242FD59F0001D0D6 /* StyleTransferModelDataHandler.swift in Sources */,
 				78F01980242FE4100001D0D6 /* InferenceImageDisplayViewController.swift in Sources */,
-				AA16E5A22180843800D9E153 /* InfoCell.swift in Sources */,
 				78F01974242FBE940001D0D6 /* StylePredictorModelDataHandler.swift in Sources */,
-				AA5B0EEA217E5E300026FF23 /* InferenceViewController.swift in Sources */,
 				78F01971242F0F5C0001D0D6 /* ModelDataHandling.swift in Sources */,
 				78F01976242FD2A90001D0D6 /* Extensions.swift in Sources */,
 				AAE79E5A213521DA00E7AC1F /* AppDelegate.swift in Sources */,
