@@ -1,5 +1,5 @@
 //
-//  StylePredictorModelDataHandler.swift
+//  StyleTransferModelDataHandler.swift
 //  ImageClassification
 //
 //  Created by Ivan Cheung on 3/28/20.
@@ -11,17 +11,21 @@ import TensorFlowLite
 import Accelerate
 
 /// Information about the MobileNet model.
-enum StylePredictorModel {
+enum StyleTransferModel {
   static let modelInfo: FileInfo = (name: "style_predict_quantized_256", extension: "tflite")
 }
 
-typealias StyleBottleneck = [Float]
+struct StyleTransferInput {
+  let styleBottleneck: [Float]
+  let pixelBuffer: CVPixelBuffer
+}
+typealias StyleTransferOutput = UIImage
 
 /// This class handles all data preprocessing and makes calls to run inference on a given frame
 /// by invoking the `Interpreter`. It then formats the inferences obtained and returns the top N
 /// results for a successful inference.
-class StylePredictorModelDataHandler: ModelDataHandling {
-  typealias Inference = StyleBottleneck
+class StyleTransferModelDataHandler: ModelDataHandling {
+  typealias Inference = StyleTransferOutput
     
   // MARK: - Internal Properties
   /// The current thread count used by the TensorFlow Lite Interpreter.
@@ -33,10 +37,7 @@ class StylePredictorModelDataHandler: ModelDataHandling {
 
   let batchSize = 1
   let inputChannels = 3
-  let inputWidth = 256
-  let inputHeight = 256
-
-//  let bottleneckSize = 100
+  let contentImageSize = 384
 
   // MARK: - Private Properties
 
@@ -46,7 +47,7 @@ class StylePredictorModelDataHandler: ModelDataHandling {
   /// Information about the alpha component in RGBA data.
   private let alphaComponent = (baseOffset: 4, moduloRemainder: 3)
   
-  private let modelFileInfo = StylePredictorModel.modelInfo
+  private let modelFileInfo = StyleTransferModel.modelInfo
   
   // Cache
 
@@ -89,8 +90,8 @@ class StylePredictorModelDataHandler: ModelDataHandling {
   // MARK: - Internal Methods
 
   /// Performs image preprocessing, invokes the `Interpreter`, and processes the inference results.
-  func runModel(input pixelBuffer: CVPixelBuffer) -> Result<StyleBottleneck>? {
-    
+  func runModel(input: StyleTransferInput) -> Result<StyleTransferOutput>? {
+    let pixelBuffer = input.pixelBuffer
     let sourcePixelFormat = CVPixelBufferGetPixelFormatType(pixelBuffer)
     assert(sourcePixelFormat == kCVPixelFormatType_32ARGB ||
              sourcePixelFormat == kCVPixelFormatType_32BGRA ||
@@ -101,7 +102,7 @@ class StylePredictorModelDataHandler: ModelDataHandling {
     assert(imageChannels >= inputChannels)
 
     // Crops the image to the biggest square in the center and scales it down to model dimensions.
-    let scaledSize = CGSize(width: inputWidth, height: inputHeight)
+    let scaledSize = CGSize(width: contentImageSize, height: contentImageSize)
     guard let thumbnailPixelBuffer = pixelBuffer.centerThumbnail(ofSize: scaledSize) else {
       return nil
     }
@@ -114,12 +115,16 @@ class StylePredictorModelDataHandler: ModelDataHandling {
       // Remove the alpha component from the image buffer to get the RGB data.
       guard let rgbData = rgbDataFromBuffer(
         thumbnailPixelBuffer,
-        byteCount: batchSize * inputWidth * inputHeight * inputChannels,
+        byteCount: batchSize * contentImageSize * contentImageSize * inputChannels,
         isModelQuantized: inputTensor.dataType == .uInt8
       ) else {
         print("Failed to convert the image buffer to RGB data.")
         return nil
       }
+        
+      // TODO: Combine 'style transfer bottleneck' with 'content image'
+      
+      
 
       // Copy the RGB data to the input `Tensor`.
       try interpreter.copy(rgbData, toInputAt: 0)
@@ -154,6 +159,9 @@ class StylePredictorModelDataHandler: ModelDataHandling {
       print("Output tensor data type \(outputTensor.dataType) is unsupported for this example app.")
       return nil
     }
+    
+    // TODO: Convert float array to StyleTransferOutput
+    let image = UIImage()
 
     // Process the results.
     // Return the inference time and inference results.
@@ -165,7 +173,8 @@ class StylePredictorModelDataHandler: ModelDataHandling {
 //                                                  executionLog: <#T##String#>,
 //                                                  errorMessage: <#T##String#>)
     
-    return Result<StyleBottleneck>(elapsedTime: interval, inference: results)
+    
+    return Result<StyleTransferOutput>(elapsedTime: interval, inference: image)
   }
 
   // MARK: - Private Methods

@@ -75,7 +75,7 @@ class InferenceViewController: UIViewController {
   var wantedInputWidth: Int = 0
   var wantedInputHeight: Int = 0
   var resolution: CGSize = CGSize.zero
-  var maxResults: Int = 0
+  var maxResults: Int = 0 // TODO: Remove this
   var threadCountLimit: Int = 0
   private var currentThreadCount: Int = 0
 
@@ -213,7 +213,7 @@ extension InferenceViewController: UITableViewDelegate, UITableViewDataSource {
     var fieldName: String = ""
     var info: String = ""
 
-    guard let tempResult = inferenceResult, tempResult.inferences.count > 0 else {
+    guard let tempResult = inferenceResult, tempResult.inference.count > 0 else {
 
       if row == 1 {
         fieldName = "No Results"
@@ -226,8 +226,8 @@ extension InferenceViewController: UITableViewDelegate, UITableViewDataSource {
       return (fieldName, info)
     }
 
-    if row < tempResult.inferences.count {
-      let inference = tempResult.inferences[row]
+    if row < tempResult.inference.count {
+      let inference = tempResult.inference[row]
 //      fieldName = inference.label
 //      info =  String(format: "%.2f", inference.confidence * 100.0) + "%"
         info = String(describing: inference)
@@ -264,7 +264,7 @@ extension InferenceViewController: UITableViewDelegate, UITableViewDataSource {
         info = "0ms"
         break
       }
-      info = String(format: "%.2fms", finalResults.inferenceTime)
+      info = String(format: "%.2fms", finalResults.elapsedTime)
     }
 
     return(fieldName, info)

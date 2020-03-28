@@ -33,7 +33,7 @@ class ViewController: UIViewController {
 
   // MARK: Instance Variables
   // Holds the results at any time
-  private var result: Result<StyleBottleneck>?
+  private var result: Result<UIImage>?
   private var initialBottomSpace: CGFloat = 0.0
   private var previousInferenceTimeMs: TimeInterval = Date.distantPast.timeIntervalSince1970 * 1000
 
@@ -42,8 +42,7 @@ class ViewController: UIViewController {
   private lazy var cameraCapture = CameraFeedManager(previewView: previewView)
 
   // Handles all data preprocessing and makes calls to run inference through the `Interpreter`.
-  private var modelDataHandler: StylePredictorModelDataHandler? =
-    StylePredictorModelDataHandler(modelFileInfo: StylePredictorModel.modelInfo)
+  private var modelDataHandler: CombinedModelDataHandler? = CombinedModelDataHandler()
 
   // Handles the presenting of results on the screen
   private var inferenceViewController: InferenceViewController?
@@ -112,7 +111,7 @@ class ViewController: UIViewController {
       inferenceViewController = segue.destination as? InferenceViewController
       inferenceViewController?.wantedInputHeight = tempModelDataHandler.inputHeight
       inferenceViewController?.wantedInputWidth = tempModelDataHandler.inputWidth
-      inferenceViewController?.maxResults = tempModelDataHandler.resultCount
+//      inferenceViewController?.maxResults = tempModelDataHandler.resultCount
       inferenceViewController?.threadCountLimit = tempModelDataHandler.threadCountLimit
       inferenceViewController?.delegate = self
 
@@ -147,9 +146,7 @@ extension ViewController: InferenceViewControllerDelegate {
   func didChangeThreadCount(to count: Int) {
     if modelDataHandler?.threadCount == count { return }
         
-    modelDataHandler = StylePredictorModelDataHandler(
-      modelFileInfo: StylePredictorModel.modelInfo,
-      threadCount: count)
+    modelDataHandler = CombinedModelDataHandler(threadCount: count)
   }
 }
 
@@ -162,7 +159,7 @@ extension ViewController: CameraFeedManagerDelegate {
     previousInferenceTimeMs = currentTimeMs
 
     // Pass the pixel buffer to TensorFlow Lite to perform inference.
-    result = modelDataHandler?.runModel(onFrame: pixelBuffer)
+    result = modelDataHandler?.runModel(input: pixelBuffer)
 
     // Display results by handing off to the InferenceViewController.
     DispatchQueue.main.async {

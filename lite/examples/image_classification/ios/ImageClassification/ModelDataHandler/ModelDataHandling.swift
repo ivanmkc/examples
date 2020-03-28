@@ -10,14 +10,18 @@ import CoreImage
 
 /// A result from invoking the `Interpreter`.
 struct Result<Inference> {
-  let inferenceTime: Double
-  let inferences: Inference
+  let elapsedTime: Double // TODO: Add unit
+  let inference: Inference
 }
 
 /// Information about a model file or labels file.
 typealias FileInfo = (name: String, extension: String)
 
 protocol ModelDataHandling {
+    associatedtype Input
     associatedtype Inference
-    func runModel(onFrame pixelBuffer: CVPixelBuffer) -> Result<Inference>?
+    
+    var threadCount: Int { get }
+    
+    func runModel(input: Input) -> Result<Inference>?
 }
