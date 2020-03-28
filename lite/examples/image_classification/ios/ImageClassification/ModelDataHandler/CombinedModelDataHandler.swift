@@ -67,8 +67,14 @@ class CombinedModelDataHandler: ModelDataHandling {
       styleBottleneck: styleBottleneckResult.inference,
       pixelBuffer: pixelBuffer)) else { return nil }
     
-    let elaspedTime = styleBottleneckResult.elapsedTime + imageResult.elapsedTime
+    let elapsedTimeInMs = styleBottleneckResult.elapsedTimeInMs + imageResult.elapsedTimeInMs
     
-    return Result<UIImage>(elapsedTime: elaspedTime, inference: imageResult.inference) // TODO: Add time spent
+    print("""
+          Style prediction: \(styleBottleneckResult.elapsedTimeInMs)
+          Style transfer: \(imageResult.elapsedTimeInMs)
+          Total: \(elapsedTimeInMs)\n
+          """)
+    
+    return Result<UIImage>(elapsedTimeInMs: elapsedTimeInMs, inference: imageResult.inference) // TODO: Add time spent
   }
 }

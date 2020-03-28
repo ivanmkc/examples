@@ -162,6 +162,6 @@ class StylePredictorModelDataHandler: ModelDataHandling {
 //                                                  executionLog: <#T##String#>,
 //                                                  errorMessage: <#T##String#>)
     
-    return Result<StyleBottleneck>(elapsedTime: interval, inference: results)
+    return Result<StyleBottleneck>(elapsedTimeInMs: interval, inference: results)
   }
 }

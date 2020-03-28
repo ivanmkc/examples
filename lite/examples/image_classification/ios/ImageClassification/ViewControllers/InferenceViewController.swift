@@ -264,7 +264,7 @@ extension InferenceViewController: UITableViewDelegate, UITableViewDataSource {
         info = "0ms"
         break
       }
-      info = String(format: "%.2fms", finalResults.elapsedTime)
+      info = String(format: "%.2fms", finalResults.elapsedTimeInMs)
     }
 
     return(fieldName, info)

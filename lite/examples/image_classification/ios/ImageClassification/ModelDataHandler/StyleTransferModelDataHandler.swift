@@ -173,6 +173,6 @@ class StyleTransferModelDataHandler: ModelDataHandling {
 //                                                  errorMessage: <#T##String#>)
     
     
-    return Result<StyleTransferOutput>(elapsedTime: interval, inference: image)
+    return Result<StyleTransferOutput>(elapsedTimeInMs: interval, inference: image)
   }
 }
