@@ -33,7 +33,7 @@ class ViewController: UIViewController {
 
   // MARK: Instance Variables
   // Holds the results at any time
-  private var result: Result<[ClassificationInference]>?
+  private var result: Result<StyleBottleneck>?
   private var initialBottomSpace: CGFloat = 0.0
   private var previousInferenceTimeMs: TimeInterval = Date.distantPast.timeIntervalSince1970 * 1000
 
@@ -42,8 +42,8 @@ class ViewController: UIViewController {
   private lazy var cameraCapture = CameraFeedManager(previewView: previewView)
 
   // Handles all data preprocessing and makes calls to run inference through the `Interpreter`.
-  private var modelDataHandler: ImageClassificationModelDataHandler? =
-    ImageClassificationModelDataHandler(modelFileInfo: MobileNet.modelInfo, labelsFileInfo: MobileNet.labelsInfo)
+  private var modelDataHandler: StylePredictorModelDataHandler? =
+    StylePredictorModelDataHandler(modelFileInfo: StylePredictorModel.modelInfo)
 
   // Handles the presenting of results on the screen
   private var inferenceViewController: InferenceViewController?
@@ -146,9 +146,9 @@ extension ViewController: InferenceViewControllerDelegate {
 
   func didChangeThreadCount(to count: Int) {
     if modelDataHandler?.threadCount == count { return }
-    modelDataHandler = ImageClassificationModelDataHandler(
-      modelFileInfo: MobileNet.modelInfo,
-      labelsFileInfo: MobileNet.labelsInfo,
+        
+    modelDataHandler = StylePredictorModelDataHandler(
+      modelFileInfo: StylePredictorModel.modelInfo,
       threadCount: count)
   }
 }

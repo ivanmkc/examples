@@ -71,7 +71,7 @@ class InferenceViewController: UIViewController {
   private let highlightedFont = UIFont.systemFont(ofSize: 14.0, weight: .medium)
 
   // MARK: Instance Variables
-  var inferenceResult: Result<[ClassificationInference]>? = nil
+  var inferenceResult: Result<StyleBottleneck>? = nil
   var wantedInputWidth: Int = 0
   var wantedInputHeight: Int = 0
   var resolution: CGSize = CGSize.zero
@@ -228,8 +228,9 @@ extension InferenceViewController: UITableViewDelegate, UITableViewDataSource {
 
     if row < tempResult.inferences.count {
       let inference = tempResult.inferences[row]
-      fieldName = inference.label
-      info =  String(format: "%.2f", inference.confidence * 100.0) + "%"
+//      fieldName = inference.label
+//      info =  String(format: "%.2f", inference.confidence * 100.0) + "%"
+        info = String(describing: inference)
     }
     else {
       fieldName = ""
