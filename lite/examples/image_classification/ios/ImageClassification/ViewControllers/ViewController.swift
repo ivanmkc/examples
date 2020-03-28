@@ -45,7 +45,7 @@ class ViewController: UIViewController {
   private var modelDataHandler: CombinedModelDataHandler? = CombinedModelDataHandler()
 
   // Handles the presenting of results on the screen
-  private var inferenceViewController: InferenceViewController?
+  private var inferenceViewController: InferenceImageDisplayViewController?
 
   // MARK: View Handling Methods
   override func viewDidLoad() {
@@ -108,12 +108,14 @@ class ViewController: UIViewController {
       guard let tempModelDataHandler = modelDataHandler else {
         return
       }
-      inferenceViewController = segue.destination as? InferenceViewController
-      inferenceViewController?.wantedInputHeight = tempModelDataHandler.inputHeight
-      inferenceViewController?.wantedInputWidth = tempModelDataHandler.inputWidth
+    
+      self.inferenceViewController = segue.destination as? InferenceImageDisplayViewController
+        
+//      inferenceViewController?.wantedInputHeight = tempModelDataHandler.inputHeight
+//      inferenceViewController?.wantedInputWidth = tempModelDataHandler.inputWidth
 //      inferenceViewController?.maxResults = tempModelDataHandler.resultCount
-      inferenceViewController?.threadCountLimit = tempModelDataHandler.threadCountLimit
-      inferenceViewController?.delegate = self
+//      inferenceViewController?.threadCountLimit = tempModelDataHandler.threadCountLimit
+//      inferenceViewController?.delegate = self
 
     }
   }
@@ -163,10 +165,12 @@ extension ViewController: CameraFeedManagerDelegate {
 
     // Display results by handing off to the InferenceViewController.
     DispatchQueue.main.async {
-      let resolution = CGSize(width: CVPixelBufferGetWidth(pixelBuffer), height: CVPixelBufferGetHeight(pixelBuffer))
-      self.inferenceViewController?.inferenceResult = self.result
-      self.inferenceViewController?.resolution = resolution
-      self.inferenceViewController?.tableView.reloadData()
+//      let resolution = CGSize(width: CVPixelBufferGetWidth(pixelBuffer), height: CVPixelBufferGetHeight(pixelBuffer))
+      
+      self.inferenceViewController?.image = self.result?.inference
+//      self.inferenceViewController?.inferenceResult = self.result
+//      self.inferenceViewController?.resolution = resolution
+//      self.inferenceViewController?.tableView.reloadData()
     }
   }
 

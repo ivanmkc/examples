@@ -6,10 +6,7 @@
 //  Copyright © 2020 Y Media Labs. All rights reserved.
 //
 
-import CoreImage
 import TensorFlowLite
-import Accelerate
-
 
 ///// An inference from invoking the `Interpreter`.
 //struct StyleBottleneck {
@@ -66,7 +63,7 @@ class CombinedModelDataHandler: ModelDataHandling {
       return nil
     }
     
-    guard let imageResult = styleTransferModelDataHandler.runModel(StyleTransferInput(
+    guard let imageResult = styleTransferModelDataHandler.runModel(input: StyleTransferInput(
       styleBottleneck: styleBottleneckResult.inference,
       pixelBuffer: pixelBuffer)) else { return nil }
     
