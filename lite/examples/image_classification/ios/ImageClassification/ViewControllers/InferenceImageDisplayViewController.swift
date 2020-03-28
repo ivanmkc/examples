@@ -21,7 +21,7 @@ class InferenceImageDisplayViewController: UIViewController {
     }
     
     // MARK: Constants
-    private let bottomSheetButtonDisplayHeight: CGFloat = 44.0
+    private let bottomSheetButtonDisplayHeight: CGFloat = 100
     
     // MARK: Computed properties
     var collapsedHeight: CGFloat {
