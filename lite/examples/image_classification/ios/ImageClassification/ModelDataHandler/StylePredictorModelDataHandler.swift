@@ -6,8 +6,16 @@
 //  Copyright © 2020 Y Media Labs. All rights reserved.
 //
 
+import UIKit
 import CoreImage
 import TensorFlowLite
+
+enum Style: String, CaseIterable {
+  case style0, style1, style2, style3, style4, style5, style6, style7
+  case style8, style9, style10, style11, style12, style13, style14
+  case style15, style16, style17, style18, style19, style20, style21
+  case style22, style23, style24, style25
+}
 
 /// Information about the MobileNet model.
 enum StylePredictorModel {
@@ -86,7 +94,9 @@ class StylePredictorModelDataHandler: ModelDataHandling {
   // MARK: - Internal Methods
 
   /// Performs image preprocessing, invokes the `Interpreter`, and processes the inference results.
-  func runModel(input pixelBuffer: CVPixelBuffer) -> Result<StyleBottleneck>? {
+  func runModel(input style: Style) -> Result<StyleBottleneck>? {
+    guard let image = UIImage(named: style.rawValue),
+          let pixelBuffer = CVPixelBuffer.buffer(from: image) else { return nil }
     
     let sourcePixelFormat = CVPixelBufferGetPixelFormatType(pixelBuffer)
     assert(sourcePixelFormat == kCVPixelFormatType_32ARGB ||

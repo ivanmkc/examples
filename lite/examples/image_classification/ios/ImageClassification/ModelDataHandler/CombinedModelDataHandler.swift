@@ -59,7 +59,7 @@ class CombinedModelDataHandler: ModelDataHandling {
 
   /// Performs image preprocessing, invokes the `Interpreter`, and processes the inference results.
   func runModel(input pixelBuffer: CVPixelBuffer) -> Result<UIImage>? {
-    guard let styleBottleneckResult = stylePredictorModelDataHandler.runModel(input: pixelBuffer) else {
+    guard let styleBottleneckResult = stylePredictorModelDataHandler.runModel(input: .style0) else {
       return nil
     }
     
